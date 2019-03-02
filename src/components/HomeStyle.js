@@ -1,17 +1,20 @@
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 export const Container = styled.div`
-width: 100vw;
-height: 100vh;
-`
+  width: 100vw;
+  height: 100vh;
+`;
 
 export const SearchDiv = styled.div`
-height: 40%;
-border: 1px solid red;
-`
+  height: 35%;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
 
 export const ResultDiv = styled.div`
-height: 60% ;
-border: 1px solid green;
-`
+  height: 75%;
+  border: 1px solid green;
+`;
