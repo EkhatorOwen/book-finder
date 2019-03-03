@@ -15,11 +15,22 @@ export const SearchDiv = styled.div`
 
 export const ResultWrapper = styled.div`
   height: 70%;
-  border: 1px solid green;
   padding: 1%;
 `;
 
 export const ResultDiv = styled.div`
   height: 100%;
-  border: 1px solid yellow;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+
+export const Link = styled.a`
+  background-color: #40a9ff;
+  color: white;
+  padding: 10px 21px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 15%;
 `;
