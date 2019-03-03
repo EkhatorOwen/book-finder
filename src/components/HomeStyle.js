@@ -6,15 +6,20 @@ export const Container = styled.div`
 `;
 
 export const SearchDiv = styled.div`
-  height: 35%;
-  border: 1px solid red;
+  height: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 `;
 
-export const ResultDiv = styled.div`
-  height: 75%;
+export const ResultWrapper = styled.div`
+  height: 70%;
   border: 1px solid green;
+  padding: 1%;
+`;
+
+export const ResultDiv = styled.div`
+  height: 100%;
+  border: 1px solid yellow;
 `;
