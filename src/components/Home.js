@@ -31,8 +31,10 @@ const Home = () => {
         }`
       );
       const { items } = await res.json();
-      console.log(items);
-      updateBooks(items);
+
+
+    // console.log(items);
+     updateBooks(items);
     }
   }
 
@@ -52,7 +54,7 @@ const Home = () => {
       <ResultWrapper>
         {isEmpty && <h3>{value}</h3>}
         <ResultDiv>
-          {books.map((book, i) => (
+          {books && (books.map((book, i) => (
             <Card
               key={i}
               hoverable
@@ -66,7 +68,7 @@ const Home = () => {
             >
               <Meta
                 title={`${book.volumeInfo.title}`}
-                description={`Author: ${book.volumeInfo.authors.map(
+                description={`Author: ${book.volumeInfo.authors && book.volumeInfo.authors.map(
                   elem => elem
                 )}`}
               />
@@ -75,7 +77,7 @@ const Home = () => {
                 Click
               </Link>
             </Card>
-          ))}
+          )))}
         </ResultDiv>
       </ResultWrapper>
     </Container>
