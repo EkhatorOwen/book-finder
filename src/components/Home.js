@@ -61,8 +61,8 @@ const Home = () => {
               style={{ width: 240, padding: "5px" }}
               cover={
                 <img
-                  alt={book.volumeInfo.title}
-                  src={book.volumeInfo.imageLinks.thumbnail}
+                  alt={ book.volumeInfo && book.volumeInfo.title}
+                  src={book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail}
                 />
               }
             >
@@ -72,8 +72,8 @@ const Home = () => {
                   elem => elem
                 )}`}
               />
-              <p>Published by: {book.volumeInfo.publisher}</p>
-              <Link target="_blank" href={book.volumeInfo.infoLink}>
+              <p>Published by: { book.volumeInfo && book.volumeInfo.publisher}</p>
+              <Link target="_blank" href={book.volumeInfo && book.volumeInfo.infoLink}>
                 Click
               </Link>
             </Card>
