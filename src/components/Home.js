@@ -4,7 +4,9 @@ import {
   SearchDiv,
   ResultWrapper,
   ResultDiv,
-  Link
+  Link,
+  LoadingDiv,
+  Image
 } from "./HomeStyle";
 import { Input, Card } from "antd";
 
@@ -17,6 +19,7 @@ const Home = () => {
   );
   const [isEmpty, updateEmpty] = useState(false);
   const [books, updateBooks] = useState([]);
+  const [isLoading, setLoading] = useState(false)
 
   async function handleSubmit(value) {
     // console.log(process.env.REACT_APP_GOOGLE_API_KEY)
@@ -25,16 +28,22 @@ const Home = () => {
       updateBooks([]);
     } else {
       updateEmpty(false);
-      const res = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${value}&key=${
-          process.env.REACT_APP_GOOGLE_API_KEY
-        }`
-      );
-      const { items } = await res.json();
 
+      try{
+        setLoading(true)
+        const res = await fetch(
+          `https://www.googleapis.com/books/v1/volumes?q=${value}&key=${
+            process.env.REACT_APP_GOOGLE_API_KEY
+          }`
+        );
+        setLoading(false)
+        const { items } = await res.json();
+  
+       updateBooks(items);
 
-    // console.log(items);
-     updateBooks(items);
+      } catch(e){
+        setValue('something went wrong, please refresh')
+      }
     }
   }
 
@@ -42,6 +51,7 @@ const Home = () => {
     <Container>
       <SearchDiv>
         <h2>BOOK FINDER</h2>
+
         <Search
           placeholder="input book title or author..."
           onSearch={value => handleSubmit(value)}
@@ -53,6 +63,7 @@ const Home = () => {
 
       <ResultWrapper>
         {isEmpty && <h3>{value}</h3>}
+        { <LoadingDiv> <Image src="https://media.giphy.com/media/11FuEnXyGsXFba/giphy.gif" alt="loaind gif"/> </LoadingDiv> && isLoading}
         <ResultDiv>
           {books && (books.map((book, i) => (
             <Card
@@ -67,7 +78,7 @@ const Home = () => {
               }
             >
               <Meta
-                title={`${book.volumeInfo.title}`}
+                title={`${book.volumeInfo && book.volumeInfo.title}`}
                 description={`Author: ${book.volumeInfo.authors && book.volumeInfo.authors.map(
                   elem => elem
                 )}`}
