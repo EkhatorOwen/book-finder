@@ -19,7 +19,7 @@ const Home = () => {
   );
   const [isEmpty, updateEmpty] = useState(false);
   const [books, updateBooks] = useState([]);
-  const [isLoading, setLoading] = useState(false)
+  const [isLoading, setLoading] = useState(true)
 
   async function handleSubmit(value) {
     // console.log(process.env.REACT_APP_GOOGLE_API_KEY)
@@ -30,7 +30,7 @@ const Home = () => {
       updateEmpty(false);
 
       try{
-        setLoading(true)
+       // setLoading(true)
         const res = await fetch(
           `https://www.googleapis.com/books/v1/volumes?q=${value}&key=${
             process.env.REACT_APP_GOOGLE_API_KEY
@@ -63,8 +63,8 @@ const Home = () => {
 
       <ResultWrapper>
         {isEmpty && <h3>{value}</h3>}
-        { <LoadingDiv> <Image src="https://media.giphy.com/media/11FuEnXyGsXFba/giphy.gif" alt="loaind gif"/> </LoadingDiv> && isLoading}
-        <ResultDiv>
+        {  isLoading && (<LoadingDiv> <Image src="https://media.giphy.com/media/11FuEnXyGsXFba/giphy.gif"  alt="loadind gif"/> </LoadingDiv>) }
+         { !isLoading && ( <ResultDiv>
           {books && (books.map((book, i) => (
             <Card
               key={i}
@@ -89,7 +89,7 @@ const Home = () => {
               </Link>
             </Card>
           )))}
-        </ResultDiv>
+        </ResultDiv>)}
       </ResultWrapper>
     </Container>
   );
