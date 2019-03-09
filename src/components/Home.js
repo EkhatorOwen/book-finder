@@ -19,30 +19,29 @@ const Home = () => {
   );
   const [isEmpty, updateEmpty] = useState(false);
   const [books, updateBooks] = useState([]);
-  const [isLoading, setLoading] = useState(true)
+  const [isLoading, setLoading] = useState(false);
 
   async function handleSubmit(value) {
-    // console.log(process.env.REACT_APP_GOOGLE_API_KEY)
     if (!value) {
       updateEmpty(true);
-      updateBooks([]);
+      return;
+      // updateBooks([]);
     } else {
+      setLoading(true);
       updateEmpty(false);
 
-      try{
-       // setLoading(true)
+      try {
         const res = await fetch(
           `https://www.googleapis.com/books/v1/volumes?q=${value}&key=${
             process.env.REACT_APP_GOOGLE_API_KEY
           }`
         );
-        setLoading(false)
+        setLoading(false);
         const { items } = await res.json();
-  
-       updateBooks(items);
 
-      } catch(e){
-        setValue('something went wrong, please refresh')
+        updateBooks(items);
+      } catch (e) {
+        setValue("something went wrong, please refresh");
       }
     }
   }
@@ -63,33 +62,53 @@ const Home = () => {
 
       <ResultWrapper>
         {isEmpty && <h3>{value}</h3>}
-        {  isLoading && (<LoadingDiv> <Image src="https://media.giphy.com/media/11FuEnXyGsXFba/giphy.gif"  alt="loadind gif"/> </LoadingDiv>) }
-         { !isLoading && ( <ResultDiv>
-          {books && (books.map((book, i) => (
-            <Card
-              key={i}
-              hoverable
-              style={{ width: 240, padding: "5px" }}
-              cover={
-                <img
-                  alt={ book.volumeInfo && book.volumeInfo.title}
-                  src={book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail}
-                />
-              }
-            >
-              <Meta
-                title={`${book.volumeInfo && book.volumeInfo.title}`}
-                description={`Author: ${book.volumeInfo.authors && book.volumeInfo.authors.map(
-                  elem => elem
-                )}`}
-              />
-              <p>Published by: { book.volumeInfo && book.volumeInfo.publisher}</p>
-              <Link target="_blank" href={book.volumeInfo && book.volumeInfo.infoLink}>
-                Click
-              </Link>
-            </Card>
-          )))}
-        </ResultDiv>)}
+        {isLoading && (
+          <LoadingDiv>
+            {" "}
+            <Image
+            height="50%"
+            width="50%"
+              src="https://media.giphy.com/media/11FuEnXyGsXFba/giphy.gif"
+              alt="loadind gif"
+            />{" "}
+          </LoadingDiv>
+        )}
+        {!isLoading && (
+          <ResultDiv>
+            {books &&
+              books.map((book, i) => (
+                <Card
+                  key={i}
+                  hoverable
+                  style={{ width: 240, padding: "5px" }}
+                  cover={
+                    <img
+                      alt={book.volumeInfo && book.volumeInfo.title}
+                      src={
+                        book.volumeInfo.imageLinks &&
+                        book.volumeInfo.imageLinks.thumbnail
+                      }
+                    />
+                  }
+                >
+                  <Meta
+                    title={`${book.volumeInfo && book.volumeInfo.title}`}
+                    description={`Author: ${book.volumeInfo.authors &&
+                      book.volumeInfo.authors.map(elem => elem)}`}
+                  />
+                  <p>
+                    Published by: {book.volumeInfo && book.volumeInfo.publisher}
+                  </p>
+                  <Link
+                    target="_blank"
+                    href={book.volumeInfo && book.volumeInfo.infoLink}
+                  >
+                    Click
+                  </Link>
+                </Card>
+              ))}
+          </ResultDiv>
+        )}
       </ResultWrapper>
     </Container>
   );
