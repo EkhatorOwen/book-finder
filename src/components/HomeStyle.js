@@ -44,6 +44,6 @@ export const LoadingDiv = styled.div`
 `;
 
 export const Image = styled.img`
-  height: ${props=>props.theme.height};
-  width: ${props=>props.theme.width};
+  height: ${props => props.theme.height};
+  width: ${props => props.theme.width};
 `;

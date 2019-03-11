@@ -1,6 +1,11 @@
 import React from "react";
 
-import { CardContainer, ImageContainer, TextContainer, Text } from "./CardStyle";
+import {
+  CardContainer,
+  ImageContainer,
+  TextContainer,
+  Text
+} from "./CardStyle";
 import { Image } from "./HomeStyle";
 
 const Card = ({ title, author, publisher, imageLink, bookLink }) => {
@@ -8,14 +13,12 @@ const Card = ({ title, author, publisher, imageLink, bookLink }) => {
     <>
       <CardContainer>
         <ImageContainer>
-        <Image
-          height="50"
-          width="50"
-        />
+          <Image height="50" width="50" />
         </ImageContainer>
-        <TextContainer> 
-        <Text><b>{title}</b></Text>
-        
+        <TextContainer>
+          <Text>
+            <b>{title}</b>
+          </Text>
         </TextContainer>
       </CardContainer>
     </>

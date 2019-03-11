@@ -66,8 +66,8 @@ const Home = () => {
           <LoadingDiv>
             {" "}
             <Image
-            height="50%"
-            width="50%"
+              height="50%"
+              width="50%"
               src="https://media.giphy.com/media/11FuEnXyGsXFba/giphy.gif"
               alt="loadind gif"
             />{" "}
