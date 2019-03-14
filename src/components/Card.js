@@ -8,7 +8,8 @@ import {
 } from "./CardStyle";
 import { Image } from "./HomeStyle";
 
-const Card = ({ title, author, publisher, imageLink, bookLink }) => {
+const Carda = ({props}) => {
+  console.log(props)
   return (
     <>
       <CardContainer>
@@ -17,7 +18,7 @@ const Card = ({ title, author, publisher, imageLink, bookLink }) => {
         </ImageContainer>
         <TextContainer>
           <Text>
-            <b>{title}</b>
+            <b></b>
           </Text>
         </TextContainer>
       </CardContainer>
@@ -25,7 +26,7 @@ const Card = ({ title, author, publisher, imageLink, bookLink }) => {
   );
 };
 
-export default Card;
+export default Carda;
 
 //title
 //author
