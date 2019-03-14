@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const CardContainer = styled.div`
   border: 4px solid blue;
-  height: 100px;
-  width: 150px;
+  height: 150px;
+  width: 200px;
 `;
 
 export const ImageContainer = styled.div`
