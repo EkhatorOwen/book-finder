@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+
+import Carda from './Card'
+
 import {
   Container,
   SearchDiv,
@@ -8,6 +11,7 @@ import {
   LoadingDiv,
   Image
 } from "./HomeStyle";
+
 import { Input, Card } from "antd";
 
 const Search = Input.Search;
@@ -77,35 +81,40 @@ const Home = () => {
           <ResultDiv>
             {books &&
               books.map((book, i) => (
-                <Card
-                  key={i}
-                  hoverable
-                  style={{ width: 240, padding: "5px" }}
-                  cover={
-                    <img
-                      alt={book.volumeInfo && book.volumeInfo.title}
-                      src={
-                        book.volumeInfo.imageLinks &&
-                        book.volumeInfo.imageLinks.thumbnail
-                      }
-                    />
-                  }
-                >
-                  <Meta
-                    title={`${book.volumeInfo && book.volumeInfo.title}`}
-                    description={`Author: ${book.volumeInfo.authors &&
-                      book.volumeInfo.authors.map(elem => elem)}`}
-                  />
-                  <p>
-                    Published by: {book.volumeInfo && book.volumeInfo.publisher}
-                  </p>
-                  <Link
-                    target="_blank"
-                    href={book.volumeInfo && book.volumeInfo.infoLink}
-                  >
-                    Click
-                  </Link>
-                </Card>
+                <Carda
+                book={book.volumeInfo}
+                key={i}
+                
+                />
+                // <Card
+                //   key={i}
+                //   hoverable
+                //   style={{ width: 240, padding: "5px" }}
+                //   cover={
+                //     <img
+                //       alt={book.volumeInfo && book.volumeInfo.title}
+                //       src={
+                //         book.volumeInfo.imageLinks &&
+                //         book.volumeInfo.imageLinks.thumbnail
+                //       }
+                //     />
+                //   }
+                // >
+                //   <Meta
+                //     title={`${book.volumeInfo && book.volumeInfo.title}`}
+                //     description={`Author: ${book.volumeInfo.authors &&
+                //       book.volumeInfo.authors.map(elem => elem)}`}
+                //   />
+                //   <p>
+                //     Published by: {book.volumeInfo && book.volumeInfo.publisher}
+                //   </p>
+                //   <Link
+                //     target="_blank"
+                //     href={book.volumeInfo && book.volumeInfo.infoLink}
+                //   >
+                //     Click
+                //   </Link>
+                // </Card>
               ))}
           </ResultDiv>
         )}
