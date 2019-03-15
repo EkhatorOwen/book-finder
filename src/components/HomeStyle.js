@@ -14,10 +14,10 @@ export const SearchDiv = styled.div`
 `;
 
 export const ResultWrapper = styled.div`
-  height: 70%;
+  height: 85%;
   padding: 1%;
 `;
-
+ 
 export const ResultDiv = styled.div`
   height: 100%;
   display: flex;

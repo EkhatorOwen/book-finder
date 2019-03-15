@@ -82,7 +82,7 @@ const Home = () => {
             {books &&
               books.map((book, i) => (
                 <Carda
-                book={book.volumeInfo}
+                book={book.volumeInfo||null}
                 key={i}
                 
                 />
