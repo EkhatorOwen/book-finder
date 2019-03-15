@@ -6,11 +6,12 @@ import {
   TextContainer,
   Text
 } from "./CardStyle";
-import { Image } from "./HomeStyle";
+import { Image, Link } from "./HomeStyle";
 
 const Carda = ({book:{title, authors, imageLinks:{thumbnail}, publisher, infoLink}}) => {
-  console.log(publisher)
  //console.log(thumbnail)
+ 
+
   return (
     <>
       <CardContainer>
@@ -21,6 +22,9 @@ const Carda = ({book:{title, authors, imageLinks:{thumbnail}, publisher, infoLin
           <Text>
             <b>{title}</b>
           </Text>
+         <Text><b>By:</b>{authors && authors.map(author=>author)}</Text>
+          <Text><b>Published by:</b>{publisher}</Text>
+          <Link target="_blank" href={infoLink}>See this book.</Link>
         </TextContainer>
       </CardContainer>
     </>
