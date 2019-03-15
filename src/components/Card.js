@@ -8,17 +8,18 @@ import {
 } from "./CardStyle";
 import { Image } from "./HomeStyle";
 
-const Carda = ({props}) => {
-  console.log(props)
+const Carda = ({book:{title, authors, imageLinks:{thumbnail}, publisher, infoLink}}) => {
+  console.log(publisher)
+ //console.log(thumbnail)
   return (
     <>
       <CardContainer>
         <ImageContainer>
-          <Image height="50" width="50" />
+          <Image src={thumbnail} />
         </ImageContainer>
         <TextContainer>
           <Text>
-            <b></b>
+            <b>{title}</b>
           </Text>
         </TextContainer>
       </CardContainer>

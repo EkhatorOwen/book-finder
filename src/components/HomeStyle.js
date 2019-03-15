@@ -23,6 +23,8 @@ export const ResultDiv = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
 `;
 
 export const Link = styled.a`
