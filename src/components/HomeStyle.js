@@ -34,7 +34,7 @@ export const Link = styled.a`
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  border-radius: 15%;
+  border-radius: 7px;
 `;
 
 export const LoadingDiv = styled.div`
