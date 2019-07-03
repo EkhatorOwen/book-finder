@@ -2,7 +2,7 @@
   "name": "book-finder",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://ekhatorowen.github.io/book-finder",
+  "homepage": "https://ekhatorowen.github.io/book-finder",
   "dependencies": {
     "antd": "^3.13.6",
     "dotenv": "^6.2.0",

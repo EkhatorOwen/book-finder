@@ -35,7 +35,12 @@ export const Link = styled.a`
   text-decoration: none;
   display: inline-block;
   border-radius: 7px;
+  &:hover{
+    color: black;
+  }
 `;
+
+
 
 export const LoadingDiv = styled.div`
   height: 100%;
