@@ -36,7 +36,7 @@ export const Link = styled.a`
   display: inline-block;
   border-radius: 7px;
   &:hover{
-    color: black;
+    color: white;
   }
 `;
 
